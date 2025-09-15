@@ -36,6 +36,14 @@ RUN useradd -m forge
 RUN echo "forge ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN echo "forge:forge" | chpasswd
 
+RUN mkdir -p /home/forge/.ssh
+RUN chmod 700 /home/forge/.ssh
+RUN chown forge:forge /home/forge/.ssh
+
+COPY ssh/authorized_keys /home/forge/.ssh/authorized_keys
+RUN chmod 600 /home/forge/.ssh/authorized_keys
+RUN chown forge:forge /home/forge/.ssh/authorized_keys
+
 EXPOSE 22
 
 CMD ["/sbin/init"]

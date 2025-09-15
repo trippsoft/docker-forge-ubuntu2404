@@ -6,6 +6,7 @@ FROM docker.io/library/ubuntu:24.04
 RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         locales \
+        python3 \
         rsyslog \
         systemd \
         systemd-cron \
